@@ -1,0 +1,31 @@
+name: DMIT Stock Monitor
+
+on:
+  schedule:
+    # 每 5 分钟运行一次 (UTC时间)
+    - cron: '*/5 * * * *'
+  workflow_dispatch: # 允许手动点击按钮运行
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Run monitor script
+        env:
+          # 推荐：在仓库 Settings -> Secrets 里配置 SC_KEY，这里引用
+          # 如果你在 main.py 里直接写死了 Key，这里可以删掉 env 部分
+          SC_KEY: ${{ secrets.SC_KEY }}
+        run: |
+          python main.py
