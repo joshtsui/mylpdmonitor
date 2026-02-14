@@ -9,7 +9,7 @@ TARGET_URL = "https://www.dmit.io/cart.php?a=add&pid=183"
 
 # Server酱 SendKey (去 https://sct.ftqq.com/ 获取)
 # 建议由环境变量传入，或者直接填在下面引号里
-SC_KEY = os.environ.get("SC_KEY", "这里填你的Server酱Key") 
+SC_KEY = os.environ.get("SC_KEY")
 
 # =========================================================
 
