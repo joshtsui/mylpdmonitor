@@ -1,4 +1,4 @@
-name: DMIT Stock Monitor
+name: My LP d Monitor
 
 on:
   schedule:
